@@ -1,8 +1,13 @@
+import Layout from "../components/Layout";
+
 export default function Home() {
   return (
-    <main>
+    <Layout>
       <h1>Lexoryya</h1>
       <p>Knowledge Without Borders</p>
-    </main>
+      <p>
+        A global digital library for Pharmacy, MBBS, Engineering, and more.
+      </p>
+    </Layout>
   );
 }
