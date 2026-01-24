@@ -34,8 +34,9 @@ export default function CategoriesBooks() {
 
       {!loading &&
         categories.map((category) => {
+          // ✅ FIX IS HERE (TYPE CONVERSION)
           const categoryBooks = books.filter(
-            (book) => book.category_id === category.id
+            (book) => Number(book.category_id) === Number(category.id)
           );
 
           return (
