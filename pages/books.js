@@ -12,7 +12,7 @@ export default function Books() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Sample Book PDF
+            Cancer – Sample Book
           </a>
         </li>
       </ul>
