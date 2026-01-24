@@ -9,9 +9,11 @@ export default function Categories() {
   useEffect(() => {
     async function loadCategories() {
       const { data, error } = await supabase
-        .from("categories")
-        .select("id, name")
-        .order("name");
+  .from("categories")
+  .select("*");
+
+console.log("Supabase categories data:", data);
+console.log("Supabase categories error:", error);
 
       if (!error) {
         setCategories(data || []);
