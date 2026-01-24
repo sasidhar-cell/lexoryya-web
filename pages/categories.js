@@ -1,10 +1,40 @@
+import { useEffect, useState } from "react";
 import Layout from "../components/Layout";
+import { supabase } from "../lib/supabaseClient";
 
 export default function Categories() {
+  const [categories, setCategories] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function loadCategories() {
+      const { data, error } = await supabase
+        .from("categories")
+        .select("id, name")
+        .order("name");
+
+      if (!error) {
+        setCategories(data || []);
+      }
+      setLoading(false);
+    }
+
+    loadCategories();
+  }, []);
+
   return (
     <Layout>
       <h1>Categories</h1>
-      <p>Pharmacy, MBBS, Engineering, and more.</p>
+
+      {loading && <p>Loading categories…</p>}
+
+      {!loading && (
+        <ul>
+          {categories.map((cat) => (
+            <li key={cat.id}>{cat.name}</li>
+          ))}
+        </ul>
+      )}
     </Layout>
   );
 }
